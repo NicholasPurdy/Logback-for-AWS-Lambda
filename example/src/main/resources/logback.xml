@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+
+            <encoder>
+                <pattern>
+                    <if condition='isNull("CLOUDWATCH_FORMAT")'>
+                        <then>
+                            %d{yyyy-MM-dd HH:mm:ss} [%thread] %level %logger - %msg%n
+                        </then>
+                        <else>
+                            <!-- CloudWatch will add a timestamp for you -->
+                            [%thread] %level %logger - %msg %replace(&#13;%ex){'\n', '&#13;'}%nopex%n
+                        </else>
+                    </if>
+                </pattern>
+            </encoder>
+
+        </layout>
+    </appender>
+
+    <logger name="net.nicholaspurdy.example" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
