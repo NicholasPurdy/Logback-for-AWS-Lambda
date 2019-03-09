@@ -5,15 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.nicholaspurdy</groupId>
-    <artifactId>example</artifactId>
+    <artifactId>spring-boot-example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -27,11 +34,11 @@
             <version>[2.2,)</version>
         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>ch.qos.logback</groupId>-->
+            <!--<artifactId>logback-classic</artifactId>-->
+            <!--<version>1.2.3</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.codehaus.janino</groupId>
@@ -41,8 +48,14 @@
 
     </dependencies>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -59,8 +72,8 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
-
 
 </project>

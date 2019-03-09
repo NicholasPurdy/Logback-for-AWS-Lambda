@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
 
+
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
 
             <encoder>
+
                 <pattern>
                     <if condition='isNull("CLOUDWATCH_FORMAT")'>
                         <then>
@@ -18,9 +20,9 @@
                         </else>
                     </if>
                 </pattern>
+
             </encoder>
 
-        </layout>
     </appender>
 
     <logger name="net.nicholaspurdy.example" level="DEBUG" additivity="false">
